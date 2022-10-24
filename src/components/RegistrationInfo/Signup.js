@@ -10,7 +10,13 @@ const Signup = () => {
     return (
         <div>
              <Form className='  border border-light m-auto shadow-lg p-2 ' style={{maxWidth:'480px'}}>
-            <h3 className='text-center mb-5 pt-4'>Please Login! </h3>
+            <h3 className='text-center mb-5 pt-4'>Please Register now! </h3>
+        <Form.Group className="mb-3 " controlId="formBasicFullName">
+          <Form.Label>Full Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter your full name" />
+         
+        </Form.Group>
+
         <Form.Group className="mb-3 " controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
@@ -21,11 +27,9 @@ const Signup = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-       <div className='d-flex justify-content-between mx-3'>
-       <Link to='/signup'><p>Create a new acount </p>
-       </Link>
-       <Link><p>forget password</p></Link>
-       </div>
+       <p>already had a account ?<Link to='/login' className='ms-2'>login
+       </Link> </p>
+      
        <p className='text-center fs-4'>or</p>
        <hr className='w-50 m-auto'/>
        <div className='d-flex justify-content-evenly  align-items-center mt-5'>
