@@ -44,10 +44,8 @@ const handleSignGithub=()=>{
     signinGithub()
     .then(()=>{})
 }
-const handleFacebook=()=>{
-    facebooksignin()
-    .then(()=>{})
-}
+
+
 const handleResetPassword=()=>{
   resetpass(userEmail)
   .then((result)=>{
@@ -75,18 +73,21 @@ const handleResetPassword=()=>{
         <p ><button onClick={handleResetPassword} className="border-0 bg-white underline">
           forget password?</button></p>
        </div>
-       <p className='text-center fs-4'>or</p>
-       <hr className='w-50 m-auto'/>
+       <div className='d-flex align-items-center justify-content-center'>
+      <hr className='w-25  me-2'/>
+       <p className='text-center fs-1'>or</p>
+       <hr className='w-25 ms-2'/>
+      </div>
        <div className='d-flex justify-content-evenly  align-items-center mt-5'>
-       <p onClick={handleSigninGoogle}>
+       <button onClick={handleSigninGoogle} className="border border-secondary rounded px-3">
         <img src={google} alt="" style={{height:'40px'}}/>
-       Google</p>
-       <p onClick={handleSignGithub}>
-        <img src={github} style={{height:'40px'}} alt="" />
-        Github</p>
-       <p onClick={handleFacebook}>
-        <img src={facebook} style={{height:'40px'}} alt="" />
-        Facebook</p>
+       Google</button>
+       
+        <button onClick={handleSignGithub} className="border border-secondary rounded px-3">
+            <img src={github} style={{ height: "40px" }} alt="" />
+            Github
+          </button>
+         
 
        </div>
         <Button variant="primary" type="submit" className=' w-50 p-2 mt-5' style={{marginLeft:'120px'}}>

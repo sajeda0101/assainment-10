@@ -15,6 +15,7 @@ const Signup = () => {
     signup,
     updateName,
     signIngoogle,
+    updateUserProfile
   } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
@@ -23,7 +24,7 @@ const Signup = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const photoUrl = form.photo.value;
+    const photoURL = form.photo.value;
     // create user
     signup(email, password)
       .then((result) => {
@@ -32,7 +33,7 @@ const Signup = () => {
         form.reset();
 
         // update user name
-        updateName(name,photoUrl)
+        updateUserProfile(name,photoURL)
           .then(() => {})
           .catch((error) => error.message);
       })
@@ -51,9 +52,7 @@ const Signup = () => {
   const handleSignGithub = () => {
     signinGithub().then(() => {});
   };
-  const handleFacebook = () => {
-    facebooksignin().then(() => {});
-  };
+  
   return (
     <div>
       <Form
@@ -72,7 +71,7 @@ const Signup = () => {
         </Form.Group>
         <Form.Group className="mb-3 " controlId="formBasicPhoto">
           <Form.Label>Photo</Form.Label>
-          <Form.Control type="file" name="photo" />
+          <Form.Control type="file" name="photo" placeholder="PhotoURL"/>
         </Form.Group>
 
         <Form.Group className="mb-3 " controlId="formBasicEmail">
@@ -95,21 +94,21 @@ const Signup = () => {
           </Link>
         </p>
 
-        <p className="text-center fs-4">or</p>
-        <hr className="w-50 m-auto" />
+        <div className='d-flex align-items-center justify-content-center'>
+      <hr className='w-25  me-2'/>
+       <p className='text-center fs-1'>or</p>
+       <hr className='w-25 ms-2'/>
+      </div>
         <div className="d-flex justify-content-evenly  align-items-center mt-5">
-          <p onClick={handleSigninGoogle}>
+          <button onClick={handleSigninGoogle} className="border border-secondary rounded px-3">
             <img src={google} alt="" style={{ height: "40px" }} />
             Google
-          </p>
-          <p onClick={handleSignGithub}>
+          </button>
+          <button onClick={handleSignGithub} className="border border-secondary rounded px-3">
             <img src={github} style={{ height: "40px" }} alt="" />
             Github
-          </p>
-          <p onClick={handleFacebook}>
-            <img src={facebook} style={{ height: "40px" }} alt="" />
-            Facebook
-          </p>
+          </button>
+         
         </div>
         <Button
           variant="primary"

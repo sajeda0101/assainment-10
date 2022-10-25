@@ -6,6 +6,8 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { toast } from "react-toastify";
 import { AuthContext } from "../UserContext/UserContext";
 import code from '../../assents/code.jpg'
+import { Image } from "react-bootstrap";
+import {FaUser} from 'react-icons/fa';
 
 const Header = () => {
   const {user,logOut}=useContext(AuthContext)
@@ -41,10 +43,17 @@ const Header = () => {
                 
 
               }
-            </Nav>
+           <Nav.Link>
             {
-              // user && user?.photoURL? <img src={photo} alt="" />:''
+              user?.photoURL?
+              <Image style={{height:'30px'}}
+              roundedCircle
+              src={user?.photoURL}>
+
+              </Image>:<FaUser></FaUser>
             }
+           </Nav.Link>
+            </Nav>
           
           </Navbar.Collapse>
         </Container>
