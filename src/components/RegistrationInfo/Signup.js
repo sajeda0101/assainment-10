@@ -1,55 +1,127 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
-import google from '../../assents/google.png'
-import github from '../../assents/github.png'
-import facebook from '../../assents/facebook.png'
+import React, { useContext } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
+import google from "../../assents/google.png";
+import github from "../../assents/github.png";
+import facebook from "../../assents/facebook.png";
+import { AuthContext } from "../UserContext/UserContext";
 
 const Signup = () => {
-    return (
-        <div>
-             <Form className='  border border-light m-auto shadow-lg p-2 ' style={{maxWidth:'480px'}}>
-            <h3 className='text-center mb-5 pt-4'>Please Register now! </h3>
+  const {
+    user,
+    facebooksignin,
+    signinGithub,
+    signup,
+    updateName,
+    signIngoogle,
+  } = useContext(AuthContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoUrl = form.photo.value;
+    // create user
+    signup(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+
+        // update user name
+        updateName(name,photoUrl)
+          .then(() => {})
+          .catch((error) => error.message);
+      })
+      .catch((error) => error.message);
+  };
+
+  //   signIngoogle
+
+  const handleSigninGoogle = () => {
+    signIngoogle()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
+  // gihub signin
+  const handleSignGithub = () => {
+    signinGithub().then(() => {});
+  };
+  const handleFacebook = () => {
+    facebooksignin().then(() => {});
+  };
+  return (
+    <div>
+      <Form
+        onSubmit={handleSubmit}
+        className="  border border-light m-auto shadow-lg p-2 "
+        style={{ maxWidth: "480px" }}
+      >
+        <h3 className="text-center mb-5 pt-4">Please Register now! </h3>
         <Form.Group className="mb-3 " controlId="formBasicFullName">
           <Form.Label>Full Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter your full name" />
-         
+          <Form.Control
+            type="text"
+            name="name"
+            placeholder="Enter your full name"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3 " controlId="formBasicPhoto">
+          <Form.Label>Photo</Form.Label>
+          <Form.Control type="file" name="photo" />
         </Form.Group>
 
         <Form.Group className="mb-3 " controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-         
+          <Form.Control type="email" name="email" placeholder="Enter email" />
         </Form.Group>
-  
+
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
         </Form.Group>
-       <p>already had a account ?<Link to='/login' className='ms-2'>login
-       </Link> </p>
-      
-       <p className='text-center fs-4'>or</p>
-       <hr className='w-50 m-auto'/>
-       <div className='d-flex justify-content-evenly  align-items-center mt-5'>
-       <p>
-        <img src={google} alt="" style={{height:'40px'}}/>
-       Google</p>
-       <p>
-        <img src={github} style={{height:'40px'}} alt="" />
-        Github</p>
-       <p>
-        <img src={facebook} style={{height:'40px'}} alt="" />
-        Facebook</p>
+        <p>
+          already have an account ?
+          <Link to="/login" className="ms-2">
+            login
+          </Link>
+        </p>
 
-       </div>
-        <Button variant="primary" type="submit" className=' w-50 p-2 mt-5' style={{marginLeft:'120px'}}>
-          Login
+        <p className="text-center fs-4">or</p>
+        <hr className="w-50 m-auto" />
+        <div className="d-flex justify-content-evenly  align-items-center mt-5">
+          <p onClick={handleSigninGoogle}>
+            <img src={google} alt="" style={{ height: "40px" }} />
+            Google
+          </p>
+          <p onClick={handleSignGithub}>
+            <img src={github} style={{ height: "40px" }} alt="" />
+            Github
+          </p>
+          <p onClick={handleFacebook}>
+            <img src={facebook} style={{ height: "40px" }} alt="" />
+            Facebook
+          </p>
+        </div>
+        <Button
+          variant="primary"
+          type="submit"
+          className=" w-50 p-2 mt-5"
+          style={{ marginLeft: "120px" }}
+        >
+          SignUp
         </Button>
       </Form>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Signup;
