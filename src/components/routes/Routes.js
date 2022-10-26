@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Main/Main";
 import Blog from "../Blog/Blog";
+import CourseInfo from "../Courses/CourseInfo";
 import Courses from "../Courses/Courses";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import FAQ from "../FAQ/FAQ";
@@ -13,11 +14,11 @@ export const router=createBrowserRouter([
     errorElement:<ErrorPage/>
     ,element:<Main/>,children:[
         {path:'/home',element:<Home/>},
-        {path:'/courses',element:<Courses/>,
-    loader:()=>fetch('http://localhost:5000/course')},
+        {path:'/course',element:<Courses/>,loader:()=> fetch('http://localhost:5000/course-category')},
         {path:'/faq',element:<FAQ/>},
+        {path:'/course',element:<CourseInfo/>},
         {path:'/blog',element:<Blog/>},
-        {path:''},
+        {path:'/courseinfo',element:<CourseInfo></CourseInfo>},
         {path:'/login',element:<Login/>},
         {path:'/signup',element:<Signup/>}
     ]

@@ -13,5 +13,16 @@ export const themeDark={
     toggleBorder:'#6B8096',
 }
 
-export const GlobalStyles=createGlobalStyle``
+export const GlobalStyles=createGlobalStyle`
+body{
+    align-items:center,
+    background;${({theme})=>theme.body};
+    color:${({theme})=>theme.text};
+    display:flex;
+    flex-direaction:column;
+    justify-content:center;
+    padding:0;
+    margin:0;
+}
+`
 
