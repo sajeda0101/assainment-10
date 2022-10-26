@@ -1,9 +1,31 @@
 import React from 'react';
+import './Home.css'
+import Carousel from 'react-bootstrap/Carousel';
+
+import bg from '../../assets/bg.jpg';
+import bg1 from '../../assets/bg4.jpg';
+import bg2 from '../../assets/bg3.jpg'
+import Figure from 'react-bootstrap/Figure';
 
 const Home = () => {
     return (
-      <section>
+      <section className='bg-secondary pt-5' >
+            <Figure>
+            <Figure.Caption className='fs-4 text-center text-white ' style={{width:'700px',marginLeft:'250px'}}>
+Welcom to our Skill developing world.We are help you to improve your skill.So if you want to develop your skill,knowledge then you can admit here.      </Figure.Caption>
+      <Figure.Image
+      width={900}
+      height={200}
+      style={{marginLeft:'200px',marginTop:'30px',borderRadius:'10px'}}
+        alt="400x180"
+        src={bg1}
+      >
         
+      </Figure.Image>
+
+    </Figure>
+
+
       </section>
     );
 };

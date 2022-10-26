@@ -1,6 +1,4 @@
 import React from 'react';
-import error from '../../assents/error1.png'
-import { FaBeer } from 'react-icons/fa';
 
 const ErrorPage = () => {
     return (

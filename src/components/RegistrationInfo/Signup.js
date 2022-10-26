@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
-import google from "../../assents/google.png";
-import github from "../../assents/github.png";
-import facebook from "../../assents/facebook.png";
+import google from "../../assets/google.png";
+import github from "../../assets/github.png";
 import { AuthContext } from "../UserContext/UserContext";
 
 const Signup = () => {

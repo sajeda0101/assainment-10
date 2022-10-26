@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { toast } from "react-toastify";
 import { AuthContext } from "../UserContext/UserContext";
-import code from '../../assents/code.jpg'
+import code from '../../assets/code.jpg'
 import { Image } from "react-bootstrap";
 import {FaUser} from 'react-icons/fa';
 
@@ -20,7 +20,7 @@ const Header = () => {
  }
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="mb-5">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="">
         <Container>
         <div className="d-flex justify-content-center align-items-center">
         <img src={code} alt="" style={{width:'60px',marginRight:'5px', borderRadius:'100px'}} />
