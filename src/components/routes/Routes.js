@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Main/Main";
 import Blog from "../Blog/Blog";
+import Course from "../Courses/Course";
 import CourseInfo from "../Courses/CourseInfo";
-import Courses from "../Courses/Courses";
+import CourseLeftSide from "../Courses/CourseLeftSide";
+import CourseRightSide from "../Courses/CourseRightSide";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import FAQ from "../FAQ/FAQ";
 import Home from "../Home/Home";
@@ -14,13 +16,14 @@ export const router=createBrowserRouter([
     errorElement:<ErrorPage/>
     ,element:<Main/>,children:[
         {path:'/home',element:<Home/>},
-        {path:'/course',element:<Courses/>,loader:()=> fetch('http://localhost:5000/course-category')},
+        {path:'/course',element:<Course/>,loader:()=>fetch('http://localhost:5000/courses-categories')},
         {path:'/faq',element:<FAQ/>},
-        {path:'/course',element:<CourseInfo/>},
         {path:'/blog',element:<Blog/>},
-        {path:'/courseinfo',element:<CourseInfo></CourseInfo>},
         {path:'/login',element:<Login/>},
-        {path:'/signup',element:<Signup/>}
+        {path:'/courses/:id',element:<CourseInfo/>,loader:({params})=>fetch(`http://localhost:5000/course/${params.id}`)},
+        {path:'/signup',element:<Signup/>},
+        // {path:'/courseleft',element:<CourseLeftSide/>},
+        // {path:'courserightside',element:<CourseRightSide/>}
     ]
 }
 ])

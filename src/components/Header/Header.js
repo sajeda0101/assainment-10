@@ -45,7 +45,7 @@ const Header = () => {
               }
            <Nav.Link>
             {
-              user?.photoURL?
+              user?
               <Image style={{height:'30px'}}
               roundedCircle
               src={user?.photoURL}>

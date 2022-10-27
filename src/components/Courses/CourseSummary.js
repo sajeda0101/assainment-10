@@ -1,9 +1,10 @@
 import React from 'react';
 
 const CourseSummary = ({course}) => {
+    const {name}=course;
     return (
         <div>
-            <p className=' fs-5 border border-primary rounded p-2 text-center'>{course.name}</p>
+            <h1>{name}</h1>
         </div>
     );
 };
