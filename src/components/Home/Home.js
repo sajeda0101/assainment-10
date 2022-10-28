@@ -9,14 +9,15 @@ import Figure from 'react-bootstrap/Figure';
 
 const Home = () => {
     return (
-      <section className='bg-secondary pt-5' >
+      <section className='bg-secondary pt-5 ' >
             <Figure>
-            <Figure.Caption className='fs-4 text-center text-white ' style={{width:'700px',marginLeft:'250px'}}>
+            <Figure.Caption className='fs-4 mb-3 text-center text-white w-75 m-auto'>
 Welcom to our Skill developing world.We are help you to improve your skill.So if you want to develop your skill,knowledge then you can admit here.      </Figure.Caption>
       <Figure.Image
-      width={900}
-      height={200}
-      style={{marginLeft:'200px',marginTop:'30px',borderRadius:'10px'}}
+    
+     className="rounded mx-auto img-fluid ps-5"
+      
+      
         alt="400x180"
         src={bg1}
       >

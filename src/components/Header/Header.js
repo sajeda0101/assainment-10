@@ -11,20 +11,25 @@ import {FaUser} from 'react-icons/fa';
 
 const Header = () => {
   const {user,logOut}=useContext(AuthContext);
-  const [name,setName]=useState(false);
-  const onHover=()=>{
-    setName(!name)
-  }
+  // const [toggle,setToggle]=useState('light');
+  // const onHover=()=>{
+  //   setName(!name)
+  // }
+
+  
   
  const handleLogout=()=>{
   logOut()
   .then(toast.warning('user logged out'))
   .catch(error=>console.log(error))
  }
- const [toggle,setToggle]=useState(true)
+ const [toggle,setToggle]=useState('light')
 const handleToggle=()=>{
-  if(!true){
-    setToggle("light")
+  if(toggle){
+    setToggle('dark')
+  }
+  else{
+    setToggle(toggle)
   }
   
    
@@ -32,19 +37,19 @@ const handleToggle=()=>{
 
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="mx-auto mb-5">
         <Container>
         <div className="d-flex justify-content-center align-items-center">
         <img src={code} alt="" style={{width:'60px',marginRight:'5px', borderRadius:'100px'}} />
-          <Navbar.Brand style={{fontSize:'45px'}}>ProCode</Navbar.Brand>
+          <Navbar.Brand style={{fontSize:'42px'}}>ProCode</Navbar.Brand>
         </div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="ms-auto">
+            <Nav className="ms-auto me-5 pe-5">
               <Nav.Link href="/course">Courses</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
               <Nav.Link href="/blog">Blog</Nav.Link>
-              <Nav.Link href="" onClick={handleToggle}>dark</Nav.Link>
+              <Nav.Link href="" onClick={handleToggle}>{toggle}</Nav.Link>
 
              
               {

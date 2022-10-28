@@ -8,11 +8,13 @@ import { AuthContext } from '../UserContext/UserContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-  const { user,resetpass,facebooksignin,signinGithub,signin,signIngoogle } = useContext(AuthContext);
+  const {user,signinGithub,signin,signIngoogle } = useContext(AuthContext);
   const [userEmail,setUserEmail]=useState('');
   const navigate=useNavigate();
   const location=useLocation()
-  const from=location.state?.pathname || '/'
+  const from=location.state?.from?.pathname || '/'
+  const [error,setError]=useState(false)
+ 
   
   const handleSubmit=(e)=>{
 
@@ -22,20 +24,18 @@ const Login = () => {
     const email=form.email.value;
     const password=form.password.value;
 
+   
+      
        signin(email,password)
        .then(result=>{
         console.log(result.user)
+        navigate(from,{replace:true})
         toast.success('Successfully Login')
         form.reset();
-        if(user.email){
-          navigate(from,{replace:true})
-        }
-        else{
-          toast.error('Please verify your email')
-        }
+      
       
        })
-       .catch(error=>toast.error(error.message))
+       .catch(error=>toast.error("please create acount first"))
       }
 
 //   signIngoogle
@@ -53,14 +53,6 @@ const handleSignGithub=()=>{
 }
 
 
-const handleResetPassword=()=>{
-  resetpass(userEmail)
-  .then((result)=>{
-    console.log(result.user)
-    toast.success('Please check your email')
-  })
-  .catch(error=>console.log(error))
-}
     return (
         <Form onSubmit={handleSubmit} className='  border border-light m-auto shadow-lg p-2 ' style={{maxWidth:'480px'}}>
             <h3 className='text-center mb-5 pt-4'>Please Login! </h3>
@@ -77,7 +69,7 @@ const handleResetPassword=()=>{
        <div className='d-flex justify-content-between mx-3'>
        <Link to='/signup'><p>Create a new acount </p>
        </Link>
-        <p ><button onClick={handleResetPassword} className="border-0 bg-white underline">
+        <p ><button className="border-0 bg-white underline">
           forget password?</button></p>
        </div>
        <div className='d-flex align-items-center justify-content-center'>
@@ -94,7 +86,7 @@ const handleResetPassword=()=>{
             <img src={github} style={{ height: "40px" }} alt="" />
             Github
           </button>
-         
+         <p>{error}</p>
 
        </div>
         <Button variant="primary" type="submit" className=' w-50 p-2 mt-5' style={{marginLeft:'120px'}}>
