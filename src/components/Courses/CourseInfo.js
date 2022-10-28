@@ -49,7 +49,7 @@ const CourseInfo = () => {
                 {course.rating.number}{" "}
               </p>
             </div>
-            <Link to="/checkout">
+            <Link to={`/checkout/${course.id}`} >
               
               <Button variant="primary" className="px-5 py-2 mt-3" style={{marginLeft:'150px'}}>Get Premium Access </Button>
             </Link>

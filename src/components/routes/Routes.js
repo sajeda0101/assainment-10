@@ -18,13 +18,13 @@ export const router=createBrowserRouter([
     errorElement:<ErrorPage/>
     ,element:<Main/>,children:[
         {path:'/',element:<Home/>},
-        {path:'/course',element:<Course/>,loader:()=>fetch('http://localhost:5000/courses-categories')},
+        {path:'/course',element:<Course/>,loader:()=>fetch('https://procode-server.vercel.app/courses-categories')},
         {path:'/faq',element:<FAQ/>},
         {path:'/blog',element:<Blog/>},
         {path:'/login',element:<Login/>},
-        {path:'/courses/:id',element:<CourseInfo/>,loader:({params})=>fetch(`http://localhost:5000/course/${params.id}`)},
+        {path:'/courses/:id',element:<CourseInfo/>,loader:({params})=>fetch(`https://procode-server.vercel.app/course/${params.id}`)},
         {path:'/signup',element:<Signup/>},
-        {path:'/checkout',element:<PrivateRoute><Checkout/></PrivateRoute>}
+        {path:'/checkout/:id',element:<PrivateRoute><Checkout/></PrivateRoute>,loader:({params})=>fetch(`https://procode-server.vercel.app/courses/${params.id}`)}
     ]
 }
 ])

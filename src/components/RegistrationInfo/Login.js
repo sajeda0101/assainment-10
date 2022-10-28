@@ -9,11 +9,10 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
   const {user,signinGithub,signin,signIngoogle } = useContext(AuthContext);
-  const [userEmail,setUserEmail]=useState('');
   const navigate=useNavigate();
   const location=useLocation()
   const from=location.state?.from?.pathname || '/'
-  const [error,setError]=useState(false)
+ 
  
   
   const handleSubmit=(e)=>{
@@ -86,7 +85,7 @@ const handleSignGithub=()=>{
             <img src={github} style={{ height: "40px" }} alt="" />
             Github
           </button>
-         <p>{error}</p>
+         <p></p>
 
        </div>
         <Button variant="primary" type="submit" className=' w-50 p-2 mt-5' style={{marginLeft:'120px'}}>

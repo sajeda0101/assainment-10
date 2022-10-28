@@ -8,7 +8,7 @@ const CourseLeftSide = () => {
     const[courses,setCourse]=useState([])
     console.log(courses)
     useEffect(()=>{
-        fetch('http://localhost:5000/courses-categories')
+        fetch('https://procode-server.vercel.app/courses-categories')
         .then(res=>res.json())
         .then(data=>setCourse(data))
         
