@@ -7,9 +7,9 @@ import CourseInfo from "../Courses/CourseInfo";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import FAQ from "../FAQ/FAQ";
 import Home from "../Home/Home";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Login from "../RegistrationInfo/Login";
 import Signup from "../RegistrationInfo/Signup";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router=createBrowserRouter([
     {
