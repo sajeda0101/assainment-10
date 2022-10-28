@@ -4,8 +4,6 @@ import Blog from "../Blog/Blog";
 import Checkout from "../Checkout/Checkout";
 import Course from "../Courses/Course";
 import CourseInfo from "../Courses/CourseInfo";
-import CourseLeftSide from "../Courses/CourseLeftSide";
-import CourseRightSide from "../Courses/CourseRightSide";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import FAQ from "../FAQ/FAQ";
 import Home from "../Home/Home";
@@ -18,7 +16,7 @@ export const router=createBrowserRouter([
     errorElement:<ErrorPage/>
     ,element:<Main/>,children:[
         {path:'/',element:<Home/>},
-        {path:'/course',element:<Course/>,loader:()=>fetch('https://procode-server.vercel.app/courses-categories')},
+        {path:'/course',element:<Course/>},
         {path:'/faq',element:<FAQ/>},
         {path:'/blog',element:<Blog/>},
         {path:'/login',element:<Login/>},

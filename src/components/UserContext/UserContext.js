@@ -1,4 +1,4 @@
-import React, { createContext, Profiler, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.init';
 import { getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,updateProfile, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, FacebookAuthProvider, signOut, onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth";
 
@@ -16,6 +16,8 @@ const signup=(email, password)=>{
 // update user name
 const updateUserProfile=(name,photoURL)=>{
     return updateProfile(auth.currentUser,{
+
+
         displayName:name,
         photoURL:photoURL
     })
