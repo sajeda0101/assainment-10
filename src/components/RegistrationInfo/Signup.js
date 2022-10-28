@@ -9,10 +9,10 @@ import { AuthContext } from "../UserContext/UserContext";
 const Signup = () => {
   const {
     user,
-    facebooksignin,
+  
     signinGithub,
     signup,
-    updateName,
+   
     signIngoogle,
     updateUserProfile
   } = useContext(AuthContext);
@@ -31,7 +31,7 @@ const Signup = () => {
         console.log(user);
         form.reset();
 
-        // update user name
+        // update user name and photoURL
         updateUserProfile(name,photoURL)
           .then(() => {})
           .catch((error) => error.message);
@@ -70,7 +70,7 @@ const Signup = () => {
         </Form.Group>
         <Form.Group className="mb-3 " controlId="formBasicPhoto">
           <Form.Label>Photo</Form.Label>
-          <Form.Control type="file" name="photo" placeholder="PhotoURL"/>
+          <Form.Control type="text" name="photo" placeholder="PhotoURL"/>
         </Form.Group>
 
         <Form.Group className="mb-3 " controlId="formBasicEmail">

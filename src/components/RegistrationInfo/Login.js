@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import google from '../../assets/google.png'
 import github from '../../assets/github.png'
 import { AuthContext } from '../UserContext/UserContext';
@@ -10,7 +10,9 @@ import { toast } from 'react-toastify';
 const Login = () => {
   const { user,resetpass,facebooksignin,signinGithub,signin,signIngoogle } = useContext(AuthContext);
   const [userEmail,setUserEmail]=useState('');
-  
+  const navigate=useNavigate();
+  const location=useLocation()
+  const from=location.state?.pathname || '/'
   
   const handleSubmit=(e)=>{
 
@@ -25,6 +27,12 @@ const Login = () => {
         console.log(result.user)
         toast.success('Successfully Login')
         form.reset();
+        if(user.email){
+          navigate(from,{replace:true})
+        }
+        else{
+          toast.error('Please verify your email')
+        }
       
        })
        .catch(error=>toast.error(error.message))

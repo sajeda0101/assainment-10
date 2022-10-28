@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
     return (
@@ -36,6 +38,10 @@ const ErrorPage = () => {
         <div className='text-center mt-3'>
             <h1>Sorry ! We coundn't found page</h1>
         </div>
+
+      <div className='text-center fs-2 mt-4 w-25 ' style={{margin:'0 auto'}}>
+        <Link to='/'>   <Button variant="secondary">Back to homepage</Button></Link>
+      </div>
        </section>
     );
 };

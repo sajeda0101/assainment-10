@@ -10,14 +10,26 @@ import { Image } from "react-bootstrap";
 import {FaUser} from 'react-icons/fa';
 
 const Header = () => {
-  const {user,logOut}=useContext(AuthContext)
-  // const [photo,setPhoto,]=useState(user.photoURL)
-   // signout
+  const {user,logOut}=useContext(AuthContext);
+  const [name,setName]=useState(false);
+  const onHover=()=>{
+    setName(!name)
+  }
+  
  const handleLogout=()=>{
   logOut()
   .then(toast.warning('user logged out'))
   .catch(error=>console.log(error))
  }
+ const [toggle,setToggle]=useState(true)
+const handleToggle=()=>{
+  if(!true){
+    setToggle("light")
+  }
+  
+   
+}
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="">
@@ -29,15 +41,12 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="/home">Home</Nav.Link>
               <Nav.Link href="/course">Courses</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
               <Nav.Link href="/blog">Blog</Nav.Link>
+              <Nav.Link href="" onClick={handleToggle}>dark</Nav.Link>
 
-              <NavDropdown title="Toggle Theme" id="collasible-nav-dropdown">
-                <NavDropdown.Item>light</NavDropdown.Item>
-                <NavDropdown.Item>dark</NavDropdown.Item>
-              </NavDropdown>
+             
               {
                 user?.email? <Nav.Link onClick={handleLogout}>Logout</Nav.Link>: <Nav.Link href="/login">Login</Nav.Link>
                 
@@ -45,10 +54,11 @@ const Header = () => {
               }
            <Nav.Link>
             {
-              user?
+              user?.photoURL?
               <Image style={{height:'30px'}}
               roundedCircle
-              src={user?.photoURL}>
+              src={user?.photoURL}
+              >
 
               </Image>:<FaUser></FaUser>
             }
